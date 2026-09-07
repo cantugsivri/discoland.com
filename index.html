@@ -13,13 +13,13 @@
 
     gtag('config', 'G-9LQJ7EZ6C6');
   </script>
-  <meta name="description" content="DISCOLAND — Disko kültürünün özgür ruhunu modern sahne estetiğiyle yeniden yaşatan yüksek enerjili canlı performans projesi. Buse Türker & Erdi İltaş.">
+  <meta name="description" id="metaDescription" content="DISCOLAND — Disko kültürünün özgür ruhunu modern sahne estetiğiyle yeniden yaşatan yüksek enerjili canlı performans projesi. Buse Türker & Erdi İltaş.">
   <meta name="keywords" content="Discoland, disco, disko, canlı performans, Buse Türker, Erdi İltaş, DJ, live show, İstanbul">
   <meta property="og:title" content="Welcome to DISCOLAND">
-  <meta property="og:description" content="Disko kültürünün özgür ruhunu modern sahne estetiğiyle yeniden yaşatıyoruz.">
+  <meta property="og:description" id="ogDescription" content="Disko kültürünün özgür ruhunu modern sahne estetiğiyle yeniden yaşatıyoruz.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://wearediscoland.com">
-  <title>Welcome to DISCOLAND</title>
+  <title id="pageTitle">Welcome to DISCOLAND</title>
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon.png?v=2">
@@ -27,7 +27,7 @@
   <link rel="shortcut icon" href="favicon.ico?v=2">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/style.css?v=27">
+  <link rel="stylesheet" href="css/style.css?v=28">
 </head>
 <body>
 
@@ -40,21 +40,31 @@
         <span></span>
       </div>
       <div class="nav-right">
-        <a href="#booking" class="nav-contact-btn">İletişim</a>
+        <div class="lang-switcher" id="langSwitcher">
+          <button type="button" class="lang-btn active" data-lang="tr" aria-label="Türkçe">TR</button>
+          <span class="lang-divider">/</span>
+          <button type="button" class="lang-btn" data-lang="en" aria-label="English">EN</button>
+        </div>
+        <a href="#booking" class="nav-contact-btn" data-i18n="nav.contact">İletişim</a>
       </div>
     </div>
   </nav>
 
   <!-- ==================== SIDE MENU ==================== -->
   <div class="side-menu" id="sideMenu">
+    <div class="side-menu-lang">
+      <button type="button" class="side-lang-btn active" data-lang="tr">TR</button>
+      <span class="side-lang-sep">|</span>
+      <button type="button" class="side-lang-btn" data-lang="en">EN</button>
+    </div>
     <ul class="side-menu-links">
-      <li><a href="#hero">Ana Sayfa</a></li>
-      <li><a href="#hikayemiz">Hikayemiz</a></li>
-      <li><a href="#konsept">Konsept</a></li>
-      <li><a href="#sahne-yuzlerimiz">Sahne Yüzlerimiz</a></li>
-      <li><a href="#nerelerde">Performans Alanları</a></li>
-      <li><a href="#medya">Medya</a></li>
-      <li><a href="#booking">Booking & İletişim</a></li>
+      <li><a href="#hero" data-i18n="menu.home">Ana Sayfa</a></li>
+      <li><a href="#hikayemiz" data-i18n="menu.story">Hikayemiz</a></li>
+      <li><a href="#konsept" data-i18n="menu.concept">Konsept</a></li>
+      <li><a href="#sahne-yuzlerimiz" data-i18n="menu.faces">Sahne Yüzlerimiz</a></li>
+      <li><a href="#nerelerde" data-i18n="menu.venues">Performans Alanları</a></li>
+      <li><a href="#medya" data-i18n="menu.media">Medya</a></li>
+      <li><a href="#booking" data-i18n="menu.booking">Booking & İletişim</a></li>
     </ul>
   </div>
   <div class="side-menu-overlay" id="sideMenuOverlay"></div>
@@ -64,11 +74,11 @@
     <div class="hero-overlay"></div>
 
     <div class="hero-content">
-      <p class="hero-subtitle">WELCOME TO</p>
+      <p class="hero-subtitle" data-i18n="hero.subtitle">WELCOME TO</p>
       <div class="hero-logo-wrapper">
         <img src="assets/images/logo.png" alt="DISCOLAND" class="hero-logo-img">
       </div>
-      <p class="hero-slogan">LIVE DISCO EXPERIENCE</p>
+      <p class="hero-slogan" data-i18n="hero.slogan">LIVE DISCO EXPERIENCE</p>
     </div>
 
     <div class="scroll-indicator">
@@ -81,34 +91,34 @@
     <div class="container">
       <div class="reveal">
         <div class="section-divider"></div>
-        <h2 class="section-title">Hikayemiz</h2>
+        <h2 class="section-title" data-i18n="story.title">Hikayemiz</h2>
       </div>
 
       <div class="story-grid">
         <!-- Sol Sütun (1. ve 2. Blok) -->
         <div class="story-col reveal reveal-delay-1">
           <div class="story-block">
-            <h3 class="story-heading">Disco ruhu geri dönüyor. Bu kez canlı.</h3>
-            <p>Bazı şarkıların büyüsü zamana meydan okur. Yıllar geçer, müzik değişir, sahneler değişir; ama o şarkılar daha ilk notasında bizi başka bir zamana götürmeye devam eder. Çünkü geçmişin en güzel dönemlerinden kalan o enerji, özgürlük ve dans etme hissi bugün hâlâ yaşıyor.</p>
+            <h3 class="story-heading" data-i18n="story.heading">Disco ruhu geri dönüyor. Bu kez canlı.</h3>
+            <p data-i18n="story.p1">Bazı şarkıların büyüsü zamana meydan okur. Yıllar geçer, müzik değişir, sahneler değişir; ama o şarkılar daha ilk notasında bizi başka bir zamana götürmeye devam eder. Çünkü geçmişin en güzel dönemlerinden kalan o enerji, özgürlük ve dans etme hissi bugün hâlâ yaşıyor.</p>
           </div>
 
           <div class="story-block">
-            <p>DISCOLAND'in hikâyesi de tam olarak bu duygudan doğdu. Dünyanın hafızasına kazınmış ikonik şarkıların yarattığı o eşsiz atmosferden ilham aldık ve DISCOLAND'in tüm dünyasını o büyülü zamanların ruhunu yeniden hissettirecek şekilde kurguladık.</p>
-            <p>Amacımız geçmişi taklit etmek değil; onun ruhunu bugünün müzikal anlayışı, sahne enerjisi ve estetiğiyle yeniden yaşatmak.</p>
+            <p data-i18n="story.p2">DISCOLAND'in hikâyesi de tam olarak bu duygudan doğdu. Dünyanın hafızasına kazınmış ikonik şarkıların yarattığı o eşsiz atmosferden ilham aldık ve DISCOLAND'in tüm dünyasını o büyülü zamanların ruhunu yeniden hissettirecek şekilde kurguladık.</p>
+            <p data-i18n="story.p3">Amacımız geçmişi taklit etmek değil; onun ruhunu bugünün müzikal anlayışı, sahne enerjisi ve estetiğiyle yeniden yaşatmak.</p>
           </div>
         </div>
 
         <!-- Sağ Sütun (3. ve 4. Blok) -->
         <div class="story-col reveal reveal-delay-2">
           <div class="story-block">
-            <p>Uzun bir hazırlık sürecinin ardından müzikten görsel dünyaya, repertuvardan sahne kimliğine kadar her detay bu fikir etrafında şekillendi. Geçmişin unutulmaz enerjisi bugünün dünyasıyla buluştu ve kendine özgü bir DISCOLAND evreni ortaya çıktı.</p>
-            <p>Türkiye'den doğan DISCOLAND, en başından itibaren sınırların ötesine geçmek ve dünya sahnelerinde yer almak üzere tasarlandı. Çünkü disco; farklı kuşakları, kültürleri ve coğrafyaları aynı ritimde buluşturan evrensel bir ruha sahip.</p>
+            <p data-i18n="story.p4">Uzun bir hazırlık sürecinin ardından müzikten görsel dünyaya, repertuvardan sahne kimliğine kadar her detay bu fikir etrafında şekillendi. Geçmişin unutulmaz enerjisi bugünün dünyasıyla buluştu ve kendine özgü bir DISCOLAND evreni ortaya çıktı.</p>
+            <p data-i18n="story.p5">Türkiye'den doğan DISCOLAND, en başından itibaren sınırların ötesine geçmek ve dünya sahnelerinde yer almak üzere tasarlandı. Çünkü disco; farklı kuşakları, kültürleri ve coğrafyaları aynı ritimde buluşturan evrensel bir ruha sahip.</p>
           </div>
 
           <div class="story-block">
-            <p>Bizim için DISCOLAND yalnızca müzik değil; özgürlük, dans, enerji ve birlikte yaşanan unutulmaz anların yeniden hayat bulması.</p>
-            <p>Geçmişten ilham alan, bugünde yaşayan ve geleceğe doğru yol alan bir hikâye.</p>
-            <p class="story-highlight">Bir dönemin ruhundan doğan DISCOLAND, şimdi kendi hikâyesini dünya sahnelerinde yazmaya hazırlanıyor.</p>
+            <p data-i18n="story.p6">Bizim için DISCOLAND yalnızca müzik değil; özgürlük, dans, enerji ve birlikte yaşanan unutulmaz anların yeniden hayat bulması.</p>
+            <p data-i18n="story.p7">Geçmişten ilham alan, bugünde yaşayan ve geleceğe doğru yol alan bir hikâye.</p>
+            <p class="story-highlight" data-i18n="story.highlight">Bir dönemin ruhundan doğan DISCOLAND, şimdi kendi hikâyesini dünya sahnelerinde yazmaya hazırlanıyor.</p>
           </div>
         </div>
       </div>
@@ -120,15 +130,15 @@
     <div class="container">
       <div class="reveal">
         <div class="section-divider"></div>
-        <h2 class="section-title">Konsept</h2>
+        <h2 class="section-title" data-i18n="concept.title">Konsept</h2>
       </div>
       <div class="konsept-list reveal reveal-delay-1">
         <ul>
-          <li>Canlı vokal + DJ performansı</li>
-          <li>90 dakika kesintisiz tek set canlı disco deneyimi</li>
-          <li>Discoland altyapıları</li>
-          <li>Özel kostümler</li>
-          <li>Yüksek enerjili bütünsel performans</li>
+          <li data-i18n="concept.item1">Canlı vokal + DJ performansı</li>
+          <li data-i18n="concept.item2">90 dakika kesintisiz tek set canlı disco deneyimi</li>
+          <li data-i18n="concept.item3">Discoland altyapıları</li>
+          <li data-i18n="concept.item4">Özel kostümler</li>
+          <li data-i18n="concept.item5">Yüksek enerjili bütünsel performans</li>
         </ul>
       </div>
     </div>
@@ -139,9 +149,9 @@
     <div class="container">
       <div class="reveal">
         <div class="section-divider"></div>
-        <h2 class="section-title">Sahne <span class="text-gradient-gold">Yüzlerimiz</span></h2>
+        <h2 class="section-title" data-i18n-html="faces.title">Sahne <span class="text-gradient-gold">Yüzlerimiz</span></h2>
       </div>
-      <p class="faces-intro reveal reveal-delay-1">DISCOLAND'in sahnedeki yüzleriyle tanışın.</p>
+      <p class="faces-intro reveal reveal-delay-1" data-i18n="faces.intro">DISCOLAND'in sahnedeki yüzleriyle tanışın.</p>
 
       <div class="faces-grid reveal reveal-delay-1">
 
@@ -151,15 +161,15 @@
           <div class="face-card-overlay">
             <div class="face-card-header">
               <h3 class="face-card-name">Buse Türker</h3>
-              <span class="face-card-title">Founder & Vocal</span>
+              <span class="face-card-title" data-i18n="faces.buseTitle">Founder & Vocal</span>
               <div class="face-card-hint">
-                <span class="hint-label">Biyografi</span>
+                <span class="hint-label" data-i18n="faces.hintBio">Biyografi</span>
                 <span class="hint-arrow">▾</span>
               </div>
             </div>
             <div class="face-card-body">
-              <p class="face-card-desc">DISCOLAND'in kurucusu ve güçlü sesi Buse Türker; müziğe olan tutkusunu, sahne deneyimini ve yaratıcı vizyonunu bir araya getirerek DISCOLAND'i hayata geçirdi.</p>
-              <p class="face-card-highlight">Güçlü vokali, kendine özgü yorumu ve yüksek sahne enerjisiyle DISCOLAND'in ruhunu sahneye taşıyor.</p>
+              <p class="face-card-desc" data-i18n="faces.buseDesc">DISCOLAND'in kurucusu ve güçlü sesi Buse Türker; müziğe olan tutkusunu, sahne deneyimini ve yaratıcı vizyonunu bir araya getirerek DISCOLAND'i hayata geçirdi.</p>
+              <p class="face-card-highlight" data-i18n="faces.buseHighlight">Güçlü vokali, kendine özgü yorumu ve yüksek sahne enerjisiyle DISCOLAND'in ruhunu sahneye taşıyor.</p>
             </div>
           </div>
         </div>
@@ -170,15 +180,15 @@
           <div class="face-card-overlay">
             <div class="face-card-header">
               <h3 class="face-card-name">Erdi İltaş</h3>
-              <span class="face-card-title">DJ & Sound Producer</span>
+              <span class="face-card-title" data-i18n="faces.erdiTitle">DJ & Sound Producer</span>
               <div class="face-card-hint">
-                <span class="hint-label">Biyografi</span>
+                <span class="hint-label" data-i18n="faces.hintBio">Biyografi</span>
                 <span class="hint-arrow">▾</span>
               </div>
             </div>
             <div class="face-card-body">
-              <p class="face-card-desc">DISCOLAND'in sound dünyasının arkasındaki isim Erdi İltaş. Proje için özel olarak tasarladığı altyapılar ve prodüksiyonlarla disco'nun zamansız enerjisini DISCOLAND'e özgü bir sound'a dönüştürüyor.</p>
-              <p class="face-card-highlight">DJ performansı ve sahnedeki enerjisiyle 90 dakikalık kesintisiz setin müzikal akışını yönetirken, DISCOLAND'in kendine özgü ses kimliğini sahneye taşıyor.</p>
+              <p class="face-card-desc" data-i18n="faces.erdiDesc">DISCOLAND'in sound dünyasının arkasındaki isim Erdi İltaş. Proje için özel olarak tasarladığı altyapılar ve prodüksiyonlarla disco'nun zamansız enerjisini DISCOLAND'e özgü bir sound'a dönüştürüyor.</p>
+              <p class="face-card-highlight" data-i18n="faces.erdiHighlight">DJ performansı ve sahnedeki enerjisiyle 90 dakikalık kesintisiz setin müzikal akışını yönetirken, DISCOLAND'in kendine özgü ses kimliğini sahneye taşıyor.</p>
             </div>
           </div>
         </div>
@@ -192,23 +202,23 @@
     <div class="container">
       <div class="reveal">
         <div class="section-divider"></div>
-        <h2 class="section-title">Performans <span class="text-gradient-gold">Alanları</span></h2>
+        <h2 class="section-title" data-i18n-html="venues.title">Performans <span class="text-gradient-gold">Alanları</span></h2>
       </div>
 
       <div class="venues-grid reveal reveal-delay-1">
-        <div class="venue-item">Lüks Oteller</div>
-        <div class="venue-item">Beach Club'lar</div>
-        <div class="venue-item">Rooftop & Teras Mekanları</div>
-        <div class="venue-item">Gece Kulüpleri & Müzik Mekanları</div>
-        <div class="venue-item">Festivaller</div>
-        <div class="venue-item">Gala & Özel Davetler</div>
-        <div class="venue-item">Moda Şovları & Defileler</div>
-        <div class="venue-item">Marka Lansmanları & Kurumsal Etkinlikler</div>
-        <div class="venue-item">Yat & Marina Etkinlikleri</div>
-        <div class="venue-item">Uluslararası Etkinlikler & Mekanlar</div>
+        <div class="venue-item" data-i18n="venues.item1">Lüks Oteller</div>
+        <div class="venue-item" data-i18n="venues.item2">Beach Club'lar</div>
+        <div class="venue-item" data-i18n="venues.item3">Rooftop & Teras Mekanları</div>
+        <div class="venue-item" data-i18n="venues.item4">Gece Kulüpleri & Müzik Mekanları</div>
+        <div class="venue-item" data-i18n="venues.item5">Festivaller</div>
+        <div class="venue-item" data-i18n="venues.item6">Gala & Özel Davetler</div>
+        <div class="venue-item" data-i18n="venues.item7">Moda Şovları & Defileler</div>
+        <div class="venue-item" data-i18n="venues.item8">Marka Lansmanları & Kurumsal Etkinlikler</div>
+        <div class="venue-item" data-i18n="venues.item9">Yat & Marina Etkinlikleri</div>
+        <div class="venue-item" data-i18n="venues.item10">Uluslararası Etkinlikler & Mekanlar</div>
       </div>
 
-      <p class="venues-footer reveal reveal-delay-1">Lüks otellerden festivallere, özel davetlerden uluslararası sahnelere uzanan <span class="text-gradient-gold">DISCOLAND</span> deneyimi.</p>
+      <p class="venues-footer reveal reveal-delay-1" data-i18n-html="venues.footer">Lüks otellerden festivallere, özel davetlerden uluslararası sahnelere uzanan <span class="text-gradient-gold">DISCOLAND</span> deneyimi.</p>
     </div>
   </section>
 
@@ -217,7 +227,7 @@
     <div class="container">
       <div class="reveal">
         <div class="section-divider"></div>
-        <h2 class="section-title">Medya</h2>
+        <h2 class="section-title" data-i18n="media.title">Medya</h2>
       </div>
       <div class="media-video-wrapper reveal reveal-delay-1">
         <div class="media-video-container">
@@ -237,13 +247,13 @@
     <div class="container">
       <div class="reveal">
         <div class="section-divider"></div>
-        <h2 class="section-title">Booking & <span class="text-gradient-gold">İletişim</span></h2>
+        <h2 class="section-title" data-i18n-html="booking.title">Booking & <span class="text-gradient-gold">İletişim</span></h2>
       </div>
 
       <div class="contact-wrapper">
         <div class="contact-text reveal reveal-delay-1">
-          <h3>Etkinliklerinizde <span class="text-gradient-gold">DISCOLAND</span> olsun.</h3>
-          <p>Özel etkinlik, festival, kurumsal organizasyon veya iş birliği teklifleriniz için bizimle iletişime geçin.</p>
+          <h3 data-i18n-html="booking.subtitle">Etkinliklerinizde <span class="text-gradient-gold">DISCOLAND</span> olsun.</h3>
+          <p data-i18n="booking.desc">Özel etkinlik, festival, kurumsal organizasyon veya iş birliği teklifleriniz için bizimle iletişime geçin.</p>
 
           <div class="contact-links">
             <!-- Email -->
@@ -255,7 +265,7 @@
                 </svg>
               </div>
               <div class="contact-link-text">
-                <span class="contact-link-label">E-posta</span>
+                <span class="contact-link-label" data-i18n="booking.emailLabel">E-posta</span>
                 <span class="contact-link-value">booking@wearediscoland.com</span>
               </div>
             </a>
@@ -270,7 +280,7 @@
                 </svg>
               </div>
               <div class="contact-link-text">
-                <span class="contact-link-label">Instagram</span>
+                <span class="contact-link-label" data-i18n="booking.instagramLabel">Instagram</span>
                 <span class="contact-link-value">@discolandofficial</span>
               </div>
             </a>
@@ -284,7 +294,7 @@
                 </svg>
               </div>
               <div class="contact-link-text">
-                <span class="contact-link-label">YouTube</span>
+                <span class="contact-link-label" data-i18n="booking.youtubeLabel">YouTube</span>
                 <span class="contact-link-value">@discolandofficial</span>
               </div>
             </a>
@@ -301,13 +311,13 @@
         <span class="footer-logo">DISCOLAND</span>
 
         <nav class="footer-nav">
-          <a href="#hero">Ana Sayfa</a>
-          <a href="#hikayemiz">Hikayemiz</a>
-          <a href="#konsept">Konsept</a>
-          <a href="#sahne-yuzlerimiz">Sahne Yüzlerimiz</a>
-          <a href="#nerelerde">Performans Alanları</a>
-          <a href="#medya">Medya</a>
-          <a href="#booking">Booking & İletişim</a>
+          <a href="#hero" data-i18n="menu.home">Ana Sayfa</a>
+          <a href="#hikayemiz" data-i18n="menu.story">Hikayemiz</a>
+          <a href="#konsept" data-i18n="menu.concept">Konsept</a>
+          <a href="#sahne-yuzlerimiz" data-i18n="menu.faces">Sahne Yüzlerimiz</a>
+          <a href="#nerelerde" data-i18n="menu.venues">Performans Alanları</a>
+          <a href="#medya" data-i18n="menu.media">Medya</a>
+          <a href="#booking" data-i18n="menu.booking">Booking & İletişim</a>
         </nav>
 
         <div class="footer-socials">
@@ -335,13 +345,14 @@
           </a>
         </div>
 
-        <p class="footer-copy">&copy; 2025 DISCOLAND. Tüm hakları saklıdır.</p>
+        <p class="footer-copy" data-i18n-html="footer.copy">&copy; 2025 DISCOLAND. Tüm hakları saklıdır.</p>
       </div>
     </div>
   </footer>
 
   <!-- Scripts -->
-  <script src="js/main.js?v=6"></script>
+  <script src="js/translations.js?v=1"></script>
+  <script src="js/main.js?v=7"></script>
 
 </body>
 </html>

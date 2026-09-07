@@ -146,21 +146,147 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // --- Multi-Language (i18n) Engine ---
+  let currentLang = 'tr';
+
+  function getTranslation(key, lang) {
+    if (typeof translations === 'undefined' || !translations[lang]) return null;
+    const keys = key.split('.');
+    let val = translations[lang];
+    for (const k of keys) {
+      if (!val || val[k] === undefined) return null;
+      val = val[k];
+    }
+    return val;
+  }
+
+  function applyLanguage(lang) {
+    if (typeof translations === 'undefined' || !translations[lang]) return;
+    currentLang = lang;
+    document.documentElement.lang = lang;
+
+    // Update text content
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      const val = getTranslation(key, lang);
+      if (val !== null) {
+        el.textContent = val;
+      }
+    });
+
+    // Update HTML content (for gradient text spans and HTML tags)
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const key = el.getAttribute('data-i18n-html');
+      const val = getTranslation(key, lang);
+      if (val !== null) {
+        el.innerHTML = val;
+      }
+    });
+
+    // Update Meta Tags & Page Title
+    if (translations[lang].meta) {
+      if (translations[lang].meta.title) {
+        document.title = translations[lang].meta.title;
+      }
+      const metaDesc = document.getElementById('metaDescription');
+      if (metaDesc && translations[lang].meta.description) {
+        metaDesc.setAttribute('content', translations[lang].meta.description);
+      }
+      const ogDesc = document.getElementById('ogDescription');
+      if (ogDesc && translations[lang].meta.description) {
+        ogDesc.setAttribute('content', translations[lang].meta.description);
+      }
+    }
+
+    // Update active state on language buttons
+    document.querySelectorAll('.lang-btn, .side-lang-btn').forEach(btn => {
+      if (btn.getAttribute('data-lang') === lang) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+
+    // Update face card toggle button text
+    document.querySelectorAll('.face-card').forEach(c => {
+      const lbl = c.querySelector('.hint-label');
+      if (lbl) {
+        const isOpened = c.classList.contains('is-open');
+        lbl.textContent = isOpened
+          ? (translations[lang].faces?.hintClose || 'Kapat')
+          : (translations[lang].faces?.hintBio || 'Biyografi');
+      }
+    });
+
+    // Save preference to localStorage
+    try {
+      localStorage.setItem('discoland_lang', lang);
+    } catch (e) {}
+  }
+
+  // Language button event listeners
+  document.querySelectorAll('.lang-btn, .side-lang-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const targetLang = btn.getAttribute('data-lang');
+      if (targetLang && targetLang !== currentLang) {
+        applyLanguage(targetLang);
+      }
+    });
+  });
+
+  // Determine initial language:
+  // 1. URL search param (?lang=en) or hash (#en)
+  // 2. localStorage saved preference
+  // 3. Browser language (auto-detect foreign visitors)
+  function getInitialLanguage() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const paramLang = urlParams.get('lang');
+    if (paramLang && (paramLang === 'en' || paramLang === 'tr')) {
+      return paramLang;
+    }
+
+    const hash = window.location.hash.toLowerCase();
+    if (hash === '#en') return 'en';
+    if (hash === '#tr') return 'tr';
+
+    try {
+      const savedLang = localStorage.getItem('discoland_lang');
+      if (savedLang && (savedLang === 'en' || savedLang === 'tr')) {
+        return savedLang;
+      }
+    } catch (e) {}
+
+    // Auto-detect: if browser language is not Turkish, default to English
+    const browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+    if (browserLang && !browserLang.startsWith('tr')) {
+      return 'en';
+    }
+
+    return 'tr';
+  }
+
+  // Initialize language
+  applyLanguage(getInitialLanguage());
+
   // --- Mobile Face Card Expand Toggle ---
   const faceCards = document.querySelectorAll('.face-card');
   faceCards.forEach(card => {
     card.addEventListener('click', (e) => {
       if (window.innerWidth <= 768) {
         const wasOpen = card.classList.contains('is-open');
+        const hintBio = (translations[currentLang]?.faces?.hintBio) || 'Biyografi';
+        const hintClose = (translations[currentLang]?.faces?.hintClose) || 'Kapat';
+
         faceCards.forEach(c => {
           c.classList.remove('is-open');
           const lbl = c.querySelector('.hint-label');
-          if (lbl) lbl.textContent = 'Biyografi';
+          if (lbl) lbl.textContent = hintBio;
         });
         if (!wasOpen) {
           card.classList.add('is-open');
           const lbl = card.querySelector('.hint-label');
-          if (lbl) lbl.textContent = 'Kapat';
+          if (lbl) lbl.textContent = hintClose;
         }
       }
     });
@@ -169,10 +295,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // Close when clicking outside face card on mobile
   document.addEventListener('click', (e) => {
     if (window.innerWidth <= 768 && !e.target.closest('.face-card')) {
+      const hintBio = (translations[currentLang]?.faces?.hintBio) || 'Biyografi';
       faceCards.forEach(c => {
         c.classList.remove('is-open');
         const lbl = c.querySelector('.hint-label');
-        if (lbl) lbl.textContent = 'Biyografi';
+        if (lbl) lbl.textContent = hintBio;
       });
     }
   });
