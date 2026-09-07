@@ -146,6 +146,37 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // --- Mobile Face Card Expand Toggle ---
+  const faceCards = document.querySelectorAll('.face-card');
+  faceCards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      if (window.innerWidth <= 768) {
+        const wasOpen = card.classList.contains('is-open');
+        faceCards.forEach(c => {
+          c.classList.remove('is-open');
+          const lbl = c.querySelector('.hint-label');
+          if (lbl) lbl.textContent = 'Biyografi';
+        });
+        if (!wasOpen) {
+          card.classList.add('is-open');
+          const lbl = card.querySelector('.hint-label');
+          if (lbl) lbl.textContent = 'Kapat';
+        }
+      }
+    });
+  });
+
+  // Close when clicking outside face card on mobile
+  document.addEventListener('click', (e) => {
+    if (window.innerWidth <= 768 && !e.target.closest('.face-card')) {
+      faceCards.forEach(c => {
+        c.classList.remove('is-open');
+        const lbl = c.querySelector('.hint-label');
+        if (lbl) lbl.textContent = 'Biyografi';
+      });
+    }
+  });
+
   // --- Easter egg: Konami Code plays disco ---
   let konamiSequence = [];
   const konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];

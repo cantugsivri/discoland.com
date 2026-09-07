@@ -568,21 +568,142 @@ img {
   transform: translateY(0);
 }
 
+/* Hide mobile hint on desktop */
+.face-card-hint {
+  display: none;
+}
+
 /* Mobile responsive */
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .faces-grid {
     grid-template-columns: 1fr;
-    gap: 28px;
+    gap: 32px;
     max-width: 400px;
   }
 
-  .face-card-name {
-    font-size: 1.2rem;
+  /* Reset desktop hover filter on touch screens */
+  .face-card:hover .face-card-img {
+    transform: none;
+    filter: none;
   }
 
-  .face-card-desc,
+  .face-card.is-open .face-card-img {
+    filter: brightness(0.18) blur(3px);
+    transform: scale(1.03);
+  }
+
+  /* Fixed bottom panel on mobile */
+  .face-card-overlay {
+    position: absolute;
+    inset: auto 0 0 0;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 1;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.96) 0%, rgba(5, 5, 5, 0.85) 65%, rgba(0, 0, 0, 0) 100%);
+    padding: 40px 20px 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 4;
+  }
+
+  .face-card-header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .face-card-name {
+    font-size: 1.35rem;
+    margin-bottom: 3px;
+    transform: none !important;
+    color: #FFFFFF;
+  }
+
+  .face-card-title {
+    font-size: 0.78rem;
+    letter-spacing: 2.5px;
+    margin-bottom: 10px;
+    transform: none !important;
+    color: var(--color-gold);
+  }
+
+  /* Expand Hint Pill */
+  .face-card-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 14px;
+    border-radius: 20px;
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.35);
+    color: var(--color-gold);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+  }
+
+  .hint-arrow {
+    font-size: 0.8rem;
+    transition: transform 0.35s ease;
+  }
+
+  /* Collapsible Body */
+  .face-card-body {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, margin-top 0.3s ease;
+    margin-top: 0;
+    width: 100%;
+  }
+
+  .face-card-desc {
+    font-size: 0.88rem;
+    line-height: 1.65;
+    margin-bottom: 12px;
+    transform: none !important;
+    color: #d8d8d8;
+  }
+
   .face-card-highlight {
-    font-size: 0.82rem;
+    font-size: 0.84rem;
+    line-height: 1.55;
+    transform: none !important;
+    color: var(--color-gold);
+  }
+
+  /* --- Open State (When tapped) --- */
+  .face-card.is-open .face-card-overlay {
+    top: 0;
+    bottom: 0;
+    justify-content: center;
+    background: rgba(5, 5, 5, 0.94);
+    backdrop-filter: blur(14px);
+    padding: 26px 20px;
+  }
+
+  .face-card.is-open .face-card-body {
+    max-height: 450px;
+    opacity: 1;
+    margin-top: 14px;
+  }
+
+  .face-card.is-open .hint-arrow {
+    transform: rotate(180deg);
+  }
+
+  .face-card.is-open .face-card-hint {
+    background: rgba(255, 215, 0, 0.22);
+    border-color: var(--color-gold);
   }
 }
 
