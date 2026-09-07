@@ -247,67 +247,29 @@ img {
   color: #FFFFFF;
 }
 
-/* Side Menu Language Switcher */
-.side-menu-lang {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 24px 0 16px;
-  margin-bottom: 12px;
-  border-bottom: 1px solid rgba(255, 215, 0, 0.15);
-}
-
-.side-lang-btn {
-  background: rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 215, 0, 0.25);
-  color: rgba(255, 255, 255, 0.55);
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 2px;
-  padding: 8px 18px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-
-.side-lang-btn:hover {
-  color: #FFFFFF;
-  border-color: var(--color-gold);
-}
-
-.side-lang-btn.active {
-  background: rgba(255, 215, 0, 0.2);
-  border-color: var(--color-gold);
-  color: var(--color-gold);
-  box-shadow: 0 0 12px rgba(255, 215, 0, 0.3);
-}
-
-.side-lang-sep {
-  color: rgba(255, 215, 0, 0.3);
-  font-size: 0.85rem;
-}
-
 /* --- Side Menu --- */
 .side-menu {
   position: fixed;
   top: 0;
-  left: -290px;
+  left: -320px;
   width: 245px;
   max-width: 75vw;
   height: 100vh;
   background: rgba(5, 5, 5, 0.96);
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   z-index: 1050;
   display: flex;
   align-items: center;
   padding: 50px 24px;
-  transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.4s;
+  visibility: hidden;
+  overflow: hidden;
 }
 
 .side-menu.active {
   left: 0;
+  visibility: visible;
 }
 
 .side-menu-links {
