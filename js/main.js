@@ -11,16 +11,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const sideMenuOverlay = document.getElementById('sideMenuOverlay');
 
   function toggleMenu() {
+    if (!sideMenu || !hamburger) return;
+    const isOpen = sideMenu.classList.toggle('active');
     hamburger.classList.toggle('active');
-    sideMenu.classList.toggle('active');
-    sideMenuOverlay.classList.toggle('active');
-    document.body.style.overflow = sideMenu.classList.contains('active') ? 'hidden' : '';
+    if (sideMenuOverlay) sideMenuOverlay.classList.toggle('active');
+    hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    document.body.style.overflow = isOpen ? 'hidden' : '';
   }
 
   function closeMenu() {
+    if (!sideMenu || !hamburger) return;
     hamburger.classList.remove('active');
     sideMenu.classList.remove('active');
-    sideMenuOverlay.classList.remove('active');
+    if (sideMenuOverlay) sideMenuOverlay.classList.remove('active');
+    hamburger.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
   }
 
@@ -36,18 +40,33 @@ document.addEventListener('DOMContentLoaded', () => {
     link.addEventListener('click', closeMenu);
   });
 
-  // --- Smooth Scroll for anchor links ---
+  // Close menu on ESC key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && sideMenu && sideMenu.classList.contains('active')) {
+      closeMenu();
+      if (hamburger) hamburger.focus();
+    }
+  });
+
+  // --- Smooth Scroll for anchor links (Safe selector check) ---
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', (e) => {
-      e.preventDefault();
       const href = anchor.getAttribute('href');
-      const target = document.querySelector(href);
-      if (target) {
-        const offsetTop = href === '#hero' ? 0 : Math.max(0, target.offsetTop - 80);
-        window.scrollTo({
-          top: offsetTop,
-          behavior: 'smooth',
-        });
+      if (!href || href === '#' || href.length <= 1) {
+        return;
+      }
+      try {
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          const offsetTop = href === '#hero' ? 0 : Math.max(0, target.offsetTop - 80);
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth',
+          });
+        }
+      } catch (err) {
+        // Silently catch invalid selectors
       }
     });
   });
@@ -76,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const id = entry.target.id;
-        document.querySelectorAll('.nav-links a').forEach(link => {
+        document.querySelectorAll('.side-menu-links a').forEach(link => {
           link.classList.remove('active');
           if (link.getAttribute('href') === `#${id}`) {
             link.classList.add('active');
@@ -90,22 +109,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
   sections.forEach(section => navObserver.observe(section));
 
-  // --- Parallax on Scroll (subtle) ---
+  // --- Parallax on Scroll (Optimized with requestAnimationFrame) ---
   const parallaxElements = document.querySelectorAll('[data-parallax]');
+  if (parallaxElements.length > 0) {
+    let ticking = false;
 
-  window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
+    function updateParallax() {
+      const scrollY = window.scrollY;
+      parallaxElements.forEach(el => {
+        const speed = parseFloat(el.dataset.parallax) || 0.1;
+        const rect = el.getBoundingClientRect();
+        const offset = (rect.top + scrollY) * speed;
+        el.style.transform = `translate3d(0, ${-offset + scrollY * speed}px, 0)`;
+      });
+      ticking = false;
+    }
 
-    parallaxElements.forEach(el => {
-      const speed = parseFloat(el.dataset.parallax) || 0.1;
-      const rect = el.getBoundingClientRect();
-      const offset = (rect.top + scrollY) * speed;
-      el.style.transform = `translateY(${-offset + scrollY * speed}px)`;
-    });
-  });
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    }, { passive: true });
+  }
 
-  // --- Gold shimmer on hover for cards ---
-  document.querySelectorAll('.performer-card, .contact-link').forEach(card => {
+  // --- Gold shimmer on hover for cards (Correct selector: .face-card) ---
+  document.querySelectorAll('.face-card, .contact-link').forEach(card => {
     card.addEventListener('mousemove', (e) => {
       const rect = card.getBoundingClientRect();
       const x = ((e.clientX - rect.left) / rect.width) * 100;
@@ -115,36 +144,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --- Counter Animation (for future stats section) ---
-  function animateCounter(element, target, duration = 2000) {
-    let start = 0;
-    const startTime = performance.now();
-
-    function update(currentTime) {
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      const current = Math.floor(eased * target);
-
-      element.textContent = current;
-
-      if (progress < 1) {
-        requestAnimationFrame(update);
-      }
+  // --- Anti-Spam Email Protection ---
+  document.querySelectorAll('.js-mail-protect').forEach(el => {
+    const user = el.getAttribute('data-user');
+    const domain = el.getAttribute('data-domain');
+    if (user && domain) {
+      el.setAttribute('href', `mailto:${user}@${domain}`);
     }
-
-    requestAnimationFrame(update);
-  }
-
-  // --- Preloader (optional - fade out) ---
-  const preloader = document.querySelector('.preloader');
-  if (preloader) {
-    window.addEventListener('load', () => {
-      preloader.style.opacity = '0';
-      preloader.style.pointerEvents = 'none';
-      setTimeout(() => preloader.remove(), 500);
-    });
-  }
+  });
 
   // --- Multi-Language (i18n) Engine ---
   let currentLang = 'tr';
@@ -174,12 +181,40 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Update HTML content (for gradient text spans and HTML tags)
+    // Helper to sanitize allowed HTML tags in translations (XSS defense)
+    function sanitizeTranslationHtml(dirty) {
+      if (!dirty) return '';
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(dirty, 'text/html');
+      const allowedTags = ['SPAN', 'B', 'STRONG', 'BR', 'EM', 'I'];
+
+      function clean(node) {
+        for (let i = node.childNodes.length - 1; i >= 0; i--) {
+          const child = node.childNodes[i];
+          if (child.nodeType === Node.ELEMENT_NODE) {
+            if (!allowedTags.includes(child.nodeName.toUpperCase())) {
+              node.replaceChild(document.createTextNode(child.textContent), child);
+            } else {
+              Array.from(child.attributes).forEach(attr => {
+                if (attr.name.toLowerCase() !== 'class') {
+                  child.removeAttribute(attr.name);
+                }
+              });
+              clean(child);
+            }
+          }
+        }
+      }
+      clean(doc.body);
+      return doc.body.innerHTML;
+    }
+
+    // Update HTML content (safely sanitized)
     document.querySelectorAll('[data-i18n-html]').forEach(el => {
       const key = el.getAttribute('data-i18n-html');
       const val = getTranslation(key, lang);
       if (val !== null) {
-        el.innerHTML = val;
+        el.innerHTML = sanitizeTranslationHtml(val);
       }
     });
 
@@ -304,12 +339,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // --- Easter egg: Konami Code plays disco ---
+  // --- Easter egg: Konami Code plays disco (Modern e.code standard) ---
   let konamiSequence = [];
-  const konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
+  const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
 
   document.addEventListener('keydown', (e) => {
-    konamiSequence.push(e.keyCode);
+    konamiSequence.push(e.code);
     konamiSequence = konamiSequence.slice(-10);
 
     if (konamiSequence.join(',') === konamiCode.join(',')) {
