@@ -71,7 +71,12 @@ const translations = {
       footer: "Lüks otellerden festivallere, özel davetlerden uluslararası sahnelere uzanan <span class=\"text-gradient-gold\">DISCOLAND</span> deneyimi."
     },
     media: {
-      title: "Medya"
+      title: "Medya",
+      galleryTitle: "Sahne <span class=\"text-gradient-gold\">Anları</span>",
+      gallerySubtitle: "Canlı performanslarımızdan özel kareler",
+      lightboxClose: "Kapat (ESC)",
+      lightboxPrev: "Önceki Fotoğraf",
+      lightboxNext: "Sonraki Fotoğraf"
     },
     booking: {
       title: "Booking & <span class=\"text-gradient-gold\">İletişim</span>",
@@ -154,7 +159,12 @@ const translations = {
       footer: "From luxury resorts to festivals, private celebrations to international stages: the <span class=\"text-gradient-gold\">DISCOLAND</span> experience."
     },
     media: {
-      title: "Media"
+      title: "Media",
+      galleryTitle: "Stage <span class=\"text-gradient-gold\">Moments</span>",
+      gallerySubtitle: "Highlights from our live performances",
+      lightboxClose: "Close (ESC)",
+      lightboxPrev: "Previous Photo",
+      lightboxNext: "Next Photo"
     },
     booking: {
       title: "Booking & <span class=\"text-gradient-gold\">Contact</span>",

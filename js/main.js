@@ -218,6 +218,15 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
+    // Update ARIA attributes
+    document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+      const key = el.getAttribute('data-i18n-aria');
+      const val = getTranslation(key, lang);
+      if (val !== null) {
+        el.setAttribute('aria-label', val);
+      }
+    });
+
     // Update Meta Tags & Page Title
     if (translations[lang].meta) {
       if (translations[lang].meta.title) {
@@ -338,6 +347,108 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   });
+
+  // --- Lightbox Gallery Interactivity ---
+  const lightbox = document.getElementById('galleryLightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxClose = document.getElementById('lightboxClose');
+  const lightboxPrev = document.getElementById('lightboxPrev');
+  const lightboxNext = document.getElementById('lightboxNext');
+  const lightboxBackdrop = document.getElementById('lightboxBackdrop');
+  const galleryItems = document.querySelectorAll('.gallery-item');
+
+  let currentPhotoIndex = 0;
+  const photoList = Array.from(galleryItems).map(item => ({
+    src: item.getAttribute('data-src'),
+    alt: item.getAttribute('data-alt') || 'DISCOLAND Sahne Fotoğrafı'
+  }));
+
+  function updateLightboxPhoto(index) {
+    if (!lightboxImg || photoList.length === 0) return;
+    currentPhotoIndex = (index + photoList.length) % photoList.length;
+    lightboxImg.style.opacity = '0';
+    lightboxImg.style.transform = 'scale(0.96)';
+
+    setTimeout(() => {
+      lightboxImg.src = photoList[currentPhotoIndex].src;
+      lightboxImg.alt = photoList[currentPhotoIndex].alt;
+      lightboxImg.style.opacity = '1';
+      lightboxImg.style.transform = 'scale(1)';
+    }, 150);
+  }
+
+  function openLightbox(index) {
+    if (!lightbox) return;
+    updateLightboxPhoto(index);
+    lightbox.classList.add('active');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    if (lightboxClose) lightboxClose.focus();
+  }
+
+  function closeLightbox() {
+    if (!lightbox) return;
+    lightbox.classList.remove('active');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function prevPhoto() {
+    updateLightboxPhoto(currentPhotoIndex - 1);
+  }
+
+  function nextPhoto() {
+    updateLightboxPhoto(currentPhotoIndex + 1);
+  }
+
+  // Gallery Item Click
+  galleryItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const idx = parseInt(item.getAttribute('data-index'), 10) || 0;
+      openLightbox(idx);
+    });
+  });
+
+  // Lightbox Controls
+  if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+  if (lightboxBackdrop) lightboxBackdrop.addEventListener('click', closeLightbox);
+  if (lightboxPrev) lightboxPrev.addEventListener('click', (e) => { e.stopPropagation(); prevPhoto(); });
+  if (lightboxNext) lightboxNext.addEventListener('click', (e) => { e.stopPropagation(); nextPhoto(); });
+
+  // Lightbox Keyboard Navigation
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox || !lightbox.classList.contains('active')) return;
+
+    if (e.code === 'Escape') {
+      closeLightbox();
+    } else if (e.code === 'ArrowLeft') {
+      prevPhoto();
+    } else if (e.code === 'ArrowRight') {
+      nextPhoto();
+    }
+  });
+
+  // Lightbox Touch Swipe Support
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  if (lightbox) {
+    lightbox.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    lightbox.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const swipeDistance = touchEndX - touchStartX;
+      if (Math.abs(swipeDistance) > 50) {
+        if (swipeDistance > 0) {
+          prevPhoto();
+        } else {
+          nextPhoto();
+        }
+      }
+    }, { passive: true });
+  }
 
   // --- Easter egg: Konami Code plays disco (Modern e.code standard) ---
   let konamiSequence = [];

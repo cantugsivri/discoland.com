@@ -31,13 +31,17 @@
   <link rel="apple-touch-icon" href="assets/images/favicon.png?v=3">
   <link rel="shortcut icon" href="favicon.ico?v=3">
 
-  <!-- Preconnect and Google Fonts (Asynchronous non-blocking) -->
+  <!-- Preconnect and Google Fonts / YouTube Media -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://www.youtube.com">
+  <link rel="preconnect" href="https://i.ytimg.com">
+  <link rel="dns-prefetch" href="https://www.youtube.com">
+  <link rel="dns-prefetch" href="https://i.ytimg.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/style.css?v=30">
+  <link rel="stylesheet" href="css/style.css?v=31">
 </head>
 <body>
 
@@ -234,12 +238,13 @@
         <div class="section-divider"></div>
         <h2 class="section-title" data-i18n="media.title">Medya</h2>
       </div>
+
+      <!-- YouTube Canlı Performans Videosu -->
       <div class="media-video-wrapper reveal reveal-delay-1">
         <div class="media-video-container">
           <iframe
             src="https://www.youtube.com/embed/pouTGh0LCow?autoplay=1&mute=1&loop=1&playlist=pouTGh0LCow&enablejsapi=1&rel=0&modestbranding=1"
             title="DISCOLAND — Live Performance"
-            loading="lazy"
             referrerpolicy="strict-origin-when-cross-origin"
             sandbox="allow-scripts allow-same-origin allow-presentation"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -247,6 +252,107 @@
           </iframe>
         </div>
       </div>
+
+      <!-- Sahne Fotoğrafları Galerisi -->
+      <div class="media-gallery-wrapper reveal reveal-delay-2">
+        <div class="gallery-header">
+          <h3 class="gallery-title" data-i18n-html="media.galleryTitle">Sahne <span class="text-gradient-gold">Anları</span></h3>
+          <p class="gallery-subtitle" data-i18n="media.gallerySubtitle">Canlı performanslarımızdan özel kareler</p>
+        </div>
+
+        <div class="media-gallery-grid">
+          <!-- 1. Canlı Sahne Düet -->
+          <div class="gallery-item" data-index="0" data-src="assets/images/gallery/discoland-live-stage.jpg" data-alt="DISCOLAND Canlı Sahne Performansı">
+            <img src="assets/images/gallery/discoland-live-stage.jpg" alt="DISCOLAND Canlı Sahne Performansı" loading="lazy" decoding="async" class="gallery-img">
+            <div class="gallery-overlay">
+              <span class="gallery-zoom-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  <line x1="11" y1="8" x2="11" y2="14"></line>
+                  <line x1="8" y1="11" x2="14" y2="11"></line>
+                </svg>
+              </span>
+            </div>
+          </div>
+
+          <!-- 2. Erdi İltaş DJ Set -->
+          <div class="gallery-item" data-index="1" data-src="assets/images/gallery/discoland-erdi-iltas-dj.jpg" data-alt="Erdi İltaş DJ Set">
+            <img src="assets/images/gallery/discoland-erdi-iltas-dj.jpg" alt="Erdi İltaş DJ Set" loading="lazy" decoding="async" class="gallery-img">
+            <div class="gallery-overlay">
+              <span class="gallery-zoom-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  <line x1="11" y1="8" x2="11" y2="14"></line>
+                  <line x1="8" y1="11" x2="14" y2="11"></line>
+                </svg>
+              </span>
+            </div>
+          </div>
+
+          <!-- 3. Buse Türker Vokal -->
+          <div class="gallery-item" data-index="2" data-src="assets/images/gallery/discoland-buse-turker-vocal.jpg" data-alt="Buse Türker Canlı Vokal">
+            <img src="assets/images/gallery/discoland-buse-turker-vocal.jpg" alt="Buse Türker Canlı Vokal" loading="lazy" decoding="async" class="gallery-img">
+            <div class="gallery-overlay">
+              <span class="gallery-zoom-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  <line x1="11" y1="8" x2="11" y2="14"></line>
+                  <line x1="8" y1="11" x2="14" y2="11"></line>
+                </svg>
+              </span>
+            </div>
+          </div>
+
+          <!-- 4. Buse Türker Sahne Performansı (Siyah & Beyaz) -->
+          <div class="gallery-item" data-index="3" data-src="assets/images/gallery/discoland-buse-stage-bw.jpg" data-alt="Buse Türker Sahne Performansı">
+            <img src="assets/images/gallery/discoland-buse-stage-bw.jpg" alt="Buse Türker Sahne Performansı" loading="lazy" decoding="async" class="gallery-img">
+            <div class="gallery-overlay">
+              <span class="gallery-zoom-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  <line x1="11" y1="8" x2="11" y2="14"></line>
+                  <line x1="8" y1="11" x2="14" y2="11"></line>
+                </svg>
+              </span>
+            </div>
+          </div>
+
+          <!-- 5. Erdi İltaş Performans -->
+          <div class="gallery-item" data-index="4" data-src="assets/images/gallery/discoland-erdi-performance.jpg" data-alt="Erdi İltaş Canlı Performans">
+            <img src="assets/images/gallery/discoland-erdi-performance.jpg" alt="Erdi İltaş Canlı Performans" loading="lazy" decoding="async" class="gallery-img">
+            <div class="gallery-overlay">
+              <span class="gallery-zoom-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  <line x1="11" y1="8" x2="11" y2="14"></line>
+                  <line x1="8" y1="11" x2="14" y2="11"></line>
+                </svg>
+              </span>
+            </div>
+          </div>
+
+          <!-- 6. Buse Türker Sahne Dansı -->
+          <div class="gallery-item" data-index="5" data-src="assets/images/gallery/discoland-buse-stage-energy.jpg" data-alt="Buse Türker Sahne Dansı">
+            <img src="assets/images/gallery/discoland-buse-stage-energy.jpg" alt="Buse Türker Sahne Dansı" loading="lazy" decoding="async" class="gallery-img">
+            <div class="gallery-overlay">
+              <span class="gallery-zoom-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  <line x1="11" y1="8" x2="11" y2="14"></line>
+                  <line x1="8" y1="11" x2="14" y2="11"></line>
+                </svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -358,9 +464,35 @@
     </div>
   </footer>
 
+  <!-- ==================== LIGHTBOX MODAL ==================== -->
+  <div class="lightbox" id="galleryLightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Görsel Önizleme">
+    <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+    <div class="lightbox-content">
+      <button type="button" class="lightbox-btn lightbox-close" id="lightboxClose" aria-label="Kapat" data-i18n-aria="media.lightboxClose">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <button type="button" class="lightbox-btn lightbox-prev" id="lightboxPrev" aria-label="Önceki" data-i18n-aria="media.lightboxPrev">
+        <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <div class="lightbox-img-wrapper">
+        <img src="" alt="" class="lightbox-img" id="lightboxImg">
+      </div>
+      <button type="button" class="lightbox-btn lightbox-next" id="lightboxNext" aria-label="Sonraki" data-i18n-aria="media.lightboxNext">
+        <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+    </div>
+  </div>
+
   <!-- Scripts -->
-  <script src="js/translations.js?v=1"></script>
-  <script src="js/main.js?v=8"></script>
+  <script src="js/translations.js?v=2"></script>
+  <script src="js/main.js?v=9"></script>
 
 </body>
 </html>
