@@ -27,6 +27,7 @@ const translations = {
     story: {
       title: "Hikayemiz",
       heading: "Disco ruhu geri dönüyor. Bu kez canlı.",
+      lead: "DISCOLAND, vokalist Buse Türker ve DJ & Sound Producer Erdi İltaş tarafından kurulan, 90 dakikalık kesintisiz canlı vokal + DJ performansıyla disko kültürünü modern sahne estetiğiyle buluşturan canlı performans projesidir.",
       p1: "Bazı şarkıların büyüsü zamana meydan okur. Yıllar geçer, müzik değişir, sahneler değişir; ama o şarkılar daha ilk notasında bizi başka bir zamana götürmeye devam eder. Çünkü geçmişin en güzel dönemlerinden kalan o enerji, özgürlük ve dans etme hissi bugün hâlâ yaşıyor.",
       p2: "DISCOLAND'in hikâyesi de tam olarak bu duygudan doğdu. Dünyanın hafızasına kazınmış ikonik şarkıların yarattığı o eşsiz atmosferden ilham aldık ve DISCOLAND'in tüm dünyasını o büyülü zamanların ruhunu yeniden hissettirecek şekilde kurguladık.",
       p3: "Amacımız geçmişi taklit etmek değil; onun ruhunu bugünün müzikal anlayışı, sahne enerjisi ve estetiğiyle yeniden yaşatmak.",
@@ -38,6 +39,7 @@ const translations = {
     },
     concept: {
       title: "Konsept",
+      desc: "DISCOLAND, vokalist Buse Türker ve DJ & Sound Producer Erdi İltaş tarafından kurulan, 90 dakikalık kesintisiz canlı vokal + DJ performansıyla disko kültürünü modern sahne estetiğiyle buluşturan canlı performans projesidir.",
       item1: "Canlı vokal + DJ performansı",
       item2: "90 dakika kesintisiz tek set canlı disco deneyimi",
       item3: "Discoland altyapıları",
@@ -115,6 +117,7 @@ const translations = {
     story: {
       title: "Our Story",
       heading: "The disco spirit returns. This time, live.",
+      lead: "DISCOLAND is a Turkey-based live disco performance project founded by vocalist Buse Türker and DJ/sound producer Erdi İltaş, reviving classic disco culture with a modern stage aesthetic through a 90-minute non-stop live vocal + DJ performance.",
       p1: "The magic of certain songs defies time. Years pass, music evolves, stages change; yet from their very first note, those timeless tracks continue to transport us to another era. The vibrant energy, boundless freedom, and urge to dance from music's golden era live on today.",
       p2: "The story of DISCOLAND was born from this exact feeling. Inspired by the electric atmosphere of world-famous iconic anthems, we sculpted the entire DISCOLAND universe to bring that magical era back to life.",
       p3: "Our aim is not to imitate the past, but to reignite its soul through modern musical arrangements, dynamic stage presence, and contemporary aesthetics.",
@@ -126,6 +129,7 @@ const translations = {
     },
     concept: {
       title: "Concept",
+      desc: "DISCOLAND is a Turkey-based live disco performance project founded by vocalist Buse Türker and DJ/sound producer Erdi İltaş, reviving classic disco culture with a modern stage aesthetic through a 90-minute non-stop live vocal + DJ performance.",
       item1: "Live Vocals + DJ Performance",
       item2: "90-Minute Non-stop Live Disco Experience",
       item3: "Exclusive Discoland Arrangements",

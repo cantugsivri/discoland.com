@@ -26,6 +26,60 @@
   <meta property="og:image" content="https://wearediscoland.com/assets/images/logo.png">
   <title id="pageTitle">Welcome to DISCOLAND</title>
 
+  <!-- Schema Markup (JSON-LD) for SEO / GEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://wearediscoland.com/#website",
+        "name": "DISCOLAND",
+        "url": "https://wearediscoland.com",
+        "description": "DISCOLAND — Live Disco Experience. A Turkey-based live disco performance project by Buse Türker and Erdi İltaş.",
+        "inLanguage": ["tr", "en"]
+      },
+      {
+        "@type": "MusicGroup",
+        "@id": "https://wearediscoland.com/#musicgroup",
+        "name": "DISCOLAND",
+        "alternateName": ["Discoland Official", "We Are Discoland"],
+        "url": "https://wearediscoland.com",
+        "logo": "https://wearediscoland.com/assets/images/logo.png",
+        "image": "https://wearediscoland.com/assets/images/logo.png",
+        "description": "DISCOLAND is a high-energy live disco performance project based in Turkey founded by vocalist Buse Türker and DJ/sound producer Erdi İltaş.",
+        "foundingDate": "2025",
+        "foundingLocation": {
+          "@type": "Place",
+          "name": "Istanbul, Turkey"
+        },
+        "genre": ["Disco", "Dance", "Funk", "Soul", "Live Performance"],
+        "member": [
+          {
+            "@type": "Person",
+            "name": "Buse Türker",
+            "roleName": "Founder & Vocalist"
+          },
+          {
+            "@type": "Person",
+            "name": "Erdi İltaş",
+            "roleName": "DJ & Sound Producer"
+          }
+        ],
+        "sameAs": [
+          "https://www.instagram.com/discolandofficial/",
+          "https://www.youtube.com/@discolandofficial"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "booking",
+          "email": "booking@wearediscoland.com"
+        }
+      }
+    ]
+  }
+  </script>
+
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon.png?v=3">
   <link rel="apple-touch-icon" href="assets/images/favicon.png?v=3">
@@ -108,6 +162,7 @@
         <div class="story-col reveal reveal-delay-1">
           <div class="story-block">
             <h3 class="story-heading" data-i18n="story.heading">Disco ruhu geri dönüyor. Bu kez canlı.</h3>
+            <p data-i18n="story.lead">DISCOLAND, vokalist Buse Türker ve DJ & Sound Producer Erdi İltaş tarafından kurulan, 90 dakikalık kesintisiz canlı vokal + DJ performansıyla disko kültürünü modern sahne estetiğiyle buluşturan canlı performans projesidir.</p>
             <p data-i18n="story.p1">Bazı şarkıların büyüsü zamana meydan okur. Yıllar geçer, müzik değişir, sahneler değişir; ama o şarkılar daha ilk notasında bizi başka bir zamana götürmeye devam eder. Çünkü geçmişin en güzel dönemlerinden kalan o enerji, özgürlük ve dans etme hissi bugün hâlâ yaşıyor.</p>
           </div>
 
@@ -141,6 +196,7 @@
         <div class="section-divider"></div>
         <h2 class="section-title" data-i18n="concept.title">Konsept</h2>
       </div>
+      <p class="faces-intro reveal reveal-delay-1" data-i18n="concept.desc">DISCOLAND, vokalist Buse Türker ve DJ & Sound Producer Erdi İltaş tarafından kurulan, 90 dakikalık kesintisiz canlı vokal + DJ performansıyla disko kültürünü modern sahne estetiğiyle buluşturan canlı performans projesidir.</p>
       <div class="konsept-list reveal reveal-delay-1">
         <ul>
           <li data-i18n="concept.item1">Canlı vokal + DJ performansı</li>
@@ -491,7 +547,7 @@
   </div>
 
   <!-- Scripts -->
-  <script src="js/translations.js?v=2"></script>
+  <script src="js/translations.js?v=3"></script>
   <script src="js/main.js?v=9"></script>
 
 </body>
